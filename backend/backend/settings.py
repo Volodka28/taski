@@ -105,7 +105,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static_backend'
+STATIC_URL = '/static_backend/'
 STATIC_ROOT = BASE_DIR / 'static_backend' 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
