@@ -66,8 +66,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # Меняем настройку Django: теперь для работы будет использоваться
+        # бэкенд postgresql
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'taski'),
+        'USER': os.getenv('POSTGRES_USER', 'admin'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
+        'HOST': os.getenv('DB_HOST', 'db'),
+        'PORT': os.getenv('DB_PORT', 5432)
     }
 }
 
@@ -105,8 +111,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static_backend/'
-STATIC_ROOT = BASE_DIR / 'static_backend' 
+STATIC_URL = '/static/'
+# Указываем корневую директорию для сборки статических файлов;
+# в контейнере это будет /app/collected_static
+STATIC_ROOT = BASE_DIR / 'collected_static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
