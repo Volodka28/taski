@@ -14,9 +14,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['158.160.2.224', '127.0.0.1', 'localhost', 'taskipracticum28.hopto.org']
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'django.contrib.admin',
@@ -60,14 +57,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        # Меняем настройку Django: теперь для работы будет использоваться
-        # бэкенд postgresql
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_DB', 'taski'),
         'USER': os.getenv('POSTGRES_USER', 'admin'),
@@ -76,10 +67,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', 5432)
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -96,10 +83,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -112,8 +95,6 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# Указываем корневую директорию для сборки статических файлов;
-# в контейнере это будет /app/collected_static
 STATIC_ROOT = BASE_DIR / 'collected_static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
